@@ -73,6 +73,7 @@ export default function ClientActivitiesView() {
       notes: activity.notes,
     });
     setEditingId(activity.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDelete = async (id) => {

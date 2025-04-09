@@ -98,7 +98,6 @@ const handleAddClient = async () => {
   };
 
 
-  
   const handleEditClient = (client) => {
     setNewClient({
       company_name: client.company_name || '',
@@ -112,15 +111,13 @@ const handleAddClient = async () => {
     });
     setSelectedClientId(client.id);
     setShowForm(true);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
 
   const toggleClientDetails = (id) => {
     setSelectedClientId(selectedClientId === id ? null : id);
   };
-
-  
-  
 
   const handleDeleteClient = async (id) => {
     if (!window.confirm('هل أنت متأكد من حذف هذا العميل؟')) return;
@@ -142,7 +139,6 @@ const handleAddClient = async () => {
     );
   }, [clients, searchTerm]);
 
-  
   const handleUpdateClient = async () => {
     const name = newClient.company_name.trim();
     if (!name) {
@@ -176,6 +172,7 @@ const handleAddClient = async () => {
       });
       setSelectedClientId(null);
       setShowForm(false);
+      window.location.reload();
       fetchClients();
     }
   };
@@ -271,7 +268,7 @@ const handleAddClient = async () => {
           style={{
             ...styles.section,
             flex: 1,
-            width: showForm ? '50%' : '100%',
+            width: showForm && window.innerWidth > 768 ? '50%' : '100%',
             maxWidth: '100%',
           }}
         >
